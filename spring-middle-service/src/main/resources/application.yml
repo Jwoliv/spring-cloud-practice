@@ -1,0 +1,8 @@
+server:
+  port: 9002
+
+spring:
+  application:
+    name: spring-middle-service
+  config:
+    import: configserver:http://localhost:9004
