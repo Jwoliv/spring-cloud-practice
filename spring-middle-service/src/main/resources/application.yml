@@ -6,3 +6,13 @@ spring:
     name: spring-middle-service
   config:
     import: configserver:http://localhost:9004
+  cache:
+    type: redis
+    redis:
+      time-to-live: 10000
+      use-key-prefix: true
+      cache-null-values: false
+      enable-statistics: true
+  data:
+    redis:
+      port: 6379
