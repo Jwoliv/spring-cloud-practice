@@ -2,7 +2,6 @@ package com.example.springmiddleservice.infrastructure.rest;
 
 import com.example.springmiddleservice.dto.AdditionDto;
 import com.example.springmiddleservice.exception.InvalidParamException;
-import com.example.springmiddleservice.openfeign.CoreClient;
 import com.example.springmiddleservice.service.CoreService;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;

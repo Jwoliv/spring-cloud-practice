@@ -13,13 +13,13 @@ public class CoreService {
     @Setter(onMethod = @__(@Autowired))
     private CoreClient coreClient;
 
-    @Cacheable(key = "#name", value = "spring-core")
+    @Cacheable(key = "#name", value = "spring-core", sync = true)
     public String getGreet(String name) {
         log.info("Greet method use again");
         return coreClient.getGreet(name).getBody();
     }
 
-    @Cacheable(key = "#v1.toString().concat('_').concat(#v2.toString())", value = "spring-core")
+    @Cacheable(key = "#v1.toString().concat('_').concat(#v2.toString())", value = "spring-core", sync = true)
     public Long getAdditionTwoValues(Long v1, Long v2) {
         return coreClient.getAdditionTwoValues(v1, v2).getBody();
     }
