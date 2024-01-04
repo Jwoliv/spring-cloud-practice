@@ -5,12 +5,14 @@ import com.example.springmiddleservice.dto.AdditionDto;
 import com.example.springmiddleservice.exception.InvalidParamException;
 import com.example.springmiddleservice.service.CoreService;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Objects;
 
+@Slf4j
 @RestController
 @RequestMapping("/middle")
 public class MiddleController {

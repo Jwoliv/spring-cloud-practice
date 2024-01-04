@@ -19,3 +19,18 @@ spring:
   kafka:
     producer:
       bootstrap-servers: localhost:9092
+  cloud:
+    compatibility-verifier:
+      enabled: false
+
+logging:
+  level:
+    org.springframework.cloud.sleuth: DEBUG
+
+management:
+  tracing:
+    sampling:
+      probability: 1
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411

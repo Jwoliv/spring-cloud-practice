@@ -6,3 +6,18 @@ spring:
     name: spring-core-service
   config:
     import: configserver:http://localhost:9004
+  cloud:
+    compatibility-verifier:
+      enabled: false
+
+logging:
+  level:
+    org.springframework.cloud.sleuth: DEBUG
+
+management:
+  tracing:
+    sampling:
+      probability: 1
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411
