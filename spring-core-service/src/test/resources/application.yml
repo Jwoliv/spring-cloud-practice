@@ -1,0 +1,19 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: spring-core-service
+  config:
+    import: optional:configserver:http://localhost:9004
+  cloud:
+    compatibility-verifier:
+      enabled: false
+
+logging:
+  level:
+    org.springframework.cloud.sleuth: DEBUG
+
+eureka:
+  client:
+    enabled: false

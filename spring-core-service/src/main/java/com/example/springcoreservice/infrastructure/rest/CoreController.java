@@ -19,14 +19,11 @@ public class CoreController {
 
 
     @GetMapping("/addition")
-    public ResponseEntity<Long> getAdditionTwoValues(
+    public ResponseEntity<String> getAdditionTwoValues(
             @RequestParam(name = "v1") Long value1,
             @RequestParam(name = "v2") Long value2
     ) {
-        return ResponseEntity.status(200).body(value1 + value2);
-    }
-
-    private Boolean checkExistedValue(Long value1, Long value2) {
-        return Objects.isNull(value1) || Objects.isNull(value2);
+        if (Objects.isNull(value1) || Objects.isNull(value2)) return ResponseEntity.badRequest().body(String.format("Params is invalid: value1 = %d, value2 = %d", value1, value2));
+        return ResponseEntity.status(200).body(String.valueOf(value1 + value2));
     }
 }
