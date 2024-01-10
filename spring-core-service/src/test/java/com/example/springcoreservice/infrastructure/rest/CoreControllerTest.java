@@ -6,14 +6,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import java.util.Objects;
-
 import static com.example.springcoreservice.utils.ParamsRequest.*;
-import static com.example.springcoreservice.utils.StringProcessor.containsSubstring;
+import static com.example.springcoreservice.utils.ParamsResponse.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 public class CoreControllerTest {
@@ -26,7 +23,7 @@ public class CoreControllerTest {
         ResponseEntity<String> responseEntity = coreController.getGreet(VALID_NAME);
 
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-        assertThat(responseEntity.getBody(), containsString("John"));
+        assertThat(responseEntity.getBody(), containsString(JOHN));
     }
 
     @Test
@@ -34,7 +31,7 @@ public class CoreControllerTest {
         ResponseEntity<String> responseEntity = coreController.getGreet(INVALID_NAME);
 
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-        assertThat(responseEntity.getBody(), containsString("Someone"));
+        assertThat(responseEntity.getBody(), containsString(SOMEONE));
     }
 
     @Test
@@ -42,7 +39,7 @@ public class CoreControllerTest {
         ResponseEntity<String> responseEntity = coreController.getAdditionTwoValues(VALID_VALUE_1, VALID_VALUE_2);
 
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-        assertEquals("15", responseEntity.getBody(), "Correct response body");
+        assertEquals("15", responseEntity.getBody(), CORRECT_RESPONSE_BODY);
     }
 
     @Test
@@ -50,7 +47,7 @@ public class CoreControllerTest {
         ResponseEntity<String> responseEntity = coreController.getAdditionTwoValues(VALID_VALUE_1, INVALID_VALUE_2);
 
         assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
-        assertTrue(containsSubstring(Objects.requireNonNull(responseEntity.getBody()), STRING_FOR_CHECK_GET_GREET));
+        assertThat(responseEntity.getBody(), containsString(STRING_FOR_CHECK_GET_GREET));
     }
 
     @Test
@@ -58,7 +55,7 @@ public class CoreControllerTest {
         ResponseEntity<String> responseEntity = coreController.getAdditionTwoValues(INVALID_VALUE_1, VALID_VALUE_2);
 
         assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
-        assertTrue(containsSubstring(Objects.requireNonNull(responseEntity.getBody()), STRING_FOR_CHECK_GET_GREET));
+        assertThat(responseEntity.getBody(), containsString(STRING_FOR_CHECK_GET_GREET));
     }
 
     @Test
@@ -66,6 +63,6 @@ public class CoreControllerTest {
         ResponseEntity<String> responseEntity = coreController.getAdditionTwoValues(INVALID_VALUE_1, INVALID_VALUE_2);
 
         assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
-        assertTrue(containsSubstring(Objects.requireNonNull(responseEntity.getBody()), STRING_FOR_CHECK_GET_GREET));
+        assertThat(responseEntity.getBody(), containsString(STRING_FOR_CHECK_GET_GREET));
     }
 }
