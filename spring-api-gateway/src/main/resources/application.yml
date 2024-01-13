@@ -5,7 +5,7 @@ spring:
   application:
     name: spring-api-gateway
   config:
-    import: configserver:http://localhost:9004
+    import: configserver:http://${CONFIG_SERVER_URL:localhost}:9004
   cloud:
     gateway:
       mvc:

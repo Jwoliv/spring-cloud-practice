@@ -4,9 +4,17 @@ server:
 spring:
   application:
     name: spring-config-server
-  cloud:
-    config:
-      server:
-        git:
-          uri: https://github.com/Jwoliv/spring-microservices-config
-          clone-on-start: true
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${EUREKA_SERVER_ADDRESS:http://localhost:9000/eureka}
+
+logging:
+  level:
+    com:
+      netflix:
+        discovery: OFF
+        eureka: OFF
