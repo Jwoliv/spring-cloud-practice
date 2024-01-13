@@ -26,11 +26,3 @@ spring:
 logging:
   level:
     org.springframework.cloud.sleuth: DEBUG
-
-management:
-  tracing:
-    sampling:
-      probability: 1
-  zipkin:
-    tracing:
-      endpoint: http://localhost:9411
